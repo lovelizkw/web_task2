@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2 — HTTP-запросы к веб-серверу</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 30px;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.5;
+        }
+        h1 {
+            text-align: center;
+            color: #004080;
+        }
+        h2 {
+            color: #0066cc;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 6px;
+            margin-top: 40px;
+        }
+        .screenshot {
+            display: block;
+            max-width: 100%;
+            border: 1px solid #999;
+            margin: 15px auto;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.95em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Задание 2. Отправка HTTP-запросов к веб-серверу</h1>
+
+<p><strong>Домен:</strong> http://u82353.kubsu-dev.ru</p>
+<p><strong>Путь к файлам:</strong> /web_task2/</p>
+
+<h2>0. Загрузка файлов в репозиторий GitHub и размещение на сервере</h2>
+<p>Файлы (index.php, file.tar.gz, image.png и др.) загружены в репозиторий GitHub, после чего размещены на учебном веб-сервере в каталоге /www/web_task2. Доступность файлов проверена в браузере по адресу учебного домена.</p>
+<img src="git.png" class="screenshot" alt="Скриншот гит">
+<img src="clone1.png" class="screenshot" alt="Скриншот подключение">
+<img src="clone2.png" class="screenshot" alt="Скриншот проверка">
+
+<h2>1. Получение главной страницы методом GET (протокол HTTP/1.0)</h2>
+<p>Отправлен запрос GET на корневой путь с использованием версии HTTP 1.0.</p>
+<img src="get1.0.png" class="screenshot" alt="Скриншот запроса 1">
+
+<h2>2. Получение страницы index.php методом GET (протокол HTTP/1.1)</h2>
+<p>Выполнен запрос GET к внутренней странице index.php с заголовком Host и Connection: close.</p>
+<img src="get1.1.png" class="screenshot" alt="Скриншот запроса 2">
+
+<h2>3. Определение размера файла file.tar.gz без скачивания (метод HEAD)</h2>
+<p>С помощью метода HEAD получены заголовки ответа, включая поле Content-Length, показывающее размер файла.</p>
+<img src="razmer.png" class="screenshot" alt="Скриншот запроса 3">
+
+<h2>4. Определение типа содержимого (медиатипа) файла image.png (метод HEAD)</h2>
+<p>Методом HEAD получены заголовки, где в Content-Type указан медиатип ресурса (image/png).</p>
+<img src="razmerimg.png" class="screenshot" alt="Скриншот запроса 4">
+
+<h2>5. Отправка комментария на сервер по адресу /index.php (метод POST)</h2>
+<p>Отправлен POST-запрос с параметром comment в теле сообщения. В ответе отображается содержимое массива $_POST.</p>
+<img src="comment.png" class="screenshot" alt="Скриншот запроса 5">
+
+<h2>6. Получение первых 100 байт файла file.tar.gz (заголовок Range)</h2>
+<p>Выполнен GET-запрос с заголовком Range: bytes=0-99. Сервер вернул статус 206 Partial Content и ровно 100 байт данных.</p>
+<img src="100byte.png" class="screenshot" alt="Скриншот запроса 6">
+
+<h2>7. Определение кодировки страницы index.php (метод HEAD)</h2>
+<p>Методом HEAD получены заголовки ответа, где в Content-Type указана кодировка charset=UTF-8.</p>
+<img src="kodirovka.png" class="screenshot" alt="Скриншот запроса 7">
+
+<div class="footer">
+    <p>Репозиторий: <a href="https://github.com/lovelizkw/web_task2">https://github.com/lovelizkw/web_task2</a></p>
+</div>
+
+</div>
+</body>
+</html>
